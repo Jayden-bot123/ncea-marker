@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>NCEA AI Marker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0 16px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+        button {
+            background: #2c3e50;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #34495e;
+        }
+        .result {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 24px;
+            white-space: pre-wrap;
+            border-left: 4px solid #2c3e50;
+        }
+        label {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+    <h1>NCEA AI Marker</h1>
+    <p>Enter the assessment number and student work below to get an AI generated grade and feedback.</p>
+
+    <form method="POST">
+        <label>Assessment number</label>
+        <input type="text" name="assessment_number" placeholder="e.g. 91479" required>
+
+        <label>Student work</label>
+        <textarea name="student_work" rows="10" 
+        placeholder="Paste the student's work here..." required></textarea>
+
+        <button type="submit">Mark this work</button>
+    </form>
+
+    {% if result %}
+    <div class="result">{{ result }}</div>
+    {% endif %}
+
+</body>
+</html>
